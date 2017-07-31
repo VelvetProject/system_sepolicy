@@ -348,6 +348,10 @@ set_prop(system_server, ctl_bugreport_prop)
 # cppreopt property
 set_prop(system_server, cppreopt_prop)
 
+# theme property
+get_prop(system_server, theme_prop)
+set_prop(system_server, theme_prop)
+
 # Create a socket for receiving info from wpa.
 type_transition system_server wifi_data_file:sock_file system_wpa_socket;
 type_transition system_server wpa_socket:sock_file system_wpa_socket;
@@ -525,6 +529,10 @@ allow system_server media_rw_data_file:dir search;
 
 # Allow invoking tools like "timeout"
 allow system_server toolbox_exec:file rx_file_perms;
+
+# For substratum service
+allow system_server theme_data_file:dir { create_dir_perms rw_dir_perms };
+allow system_server theme_data_file:file { create_file_perms rw_file_perms };
 
 # Postinstall
 #
